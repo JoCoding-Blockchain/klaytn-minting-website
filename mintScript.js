@@ -81,7 +81,7 @@ async function publicMint() {
     if (maxSaleAmount + 1 >= mintIndexForSale) {
         alert("모든 물량이 소진되었습니다.");
         return;
-    } else {
+    } else if (blockNumber <= mintStartBlockNumber) {
         alert("아직 민팅이 시작되지 않았습니다.");
     }
     const total_value = amount * mintPrice;
