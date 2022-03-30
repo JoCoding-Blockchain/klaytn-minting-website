@@ -78,7 +78,7 @@ async function publicMint() {
     const myContract = new caver.klay.Contract(ABI, CONTRACTADDRESS);
     const amount = document.getElementById('amount').value;
     await check_status();
-    if (maxSaleAmount + 1 >= mintIndexForSale) {
+    if (maxSaleAmount + 1 <= mintIndexForSale) {
         alert("모든 물량이 소진되었습니다.");
         return;
     } else if (blockNumber <= mintStartBlockNumber) {
