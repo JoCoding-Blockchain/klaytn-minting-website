@@ -42,11 +42,11 @@ async function check_status() {
     await myContract.methods.mintingInformation().call()
         .then(function (result) {
             console.log(result);
-            mintIndexForSale = result[1];
-            mintLimitPerBlock = result[2];
-            mintStartBlockNumber = result[4];
-            maxSaleAmount = result[5];
-            mintPrice = result[6];
+            mintIndexForSale = parseInt(result[1]);
+            mintLimitPerBlock = parseInt(result[2]);
+            mintStartBlockNumber = parseInt(result[4]);
+            maxSaleAmount = parseInt(result[5]);
+            mintPrice = parseInt(result[6]);
             document.getElementById("mintCnt").innerHTML = `${mintIndexForSale - 1} / ${maxSaleAmount}`;
             document.getElementById("mintLimitPerBlock").innerHTML = `트랜잭션당 최대 수량: ${mintLimitPerBlock}개`;
             document.getElementById('amount').max = mintLimitPerBlock;
@@ -83,6 +83,7 @@ async function publicMint() {
         return;
     } else if (blockNumber <= mintStartBlockNumber) {
         alert("아직 민팅이 시작되지 않았습니다.");
+        return;
     }
     const total_value = amount * mintPrice;
 
