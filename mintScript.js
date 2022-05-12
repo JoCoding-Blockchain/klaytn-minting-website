@@ -104,22 +104,6 @@ async function publicMint() {
                     gas: estmated_gas,
                     value: total_value
                 })
-                .on("transactionHash", (txid) => {
-                    console.log(txid);
-                })
-                .once("allEvents", (allEvents) => {
-                    console.log(allEvents);
-                })
-                .once("Transfer", (transferEvent) => {
-                    console.log(transferEvent);
-                })
-                .once("receipt", (receipt) => {
-                    alert("민팅에 성공하였습니다.");
-                })
-                .on("error", (error) => {
-                    alert("민팅에 실패하였습니다.");
-                    console.log(error);
-                });
         })
         .catch(function (error) {
             console.log(error);
