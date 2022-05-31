@@ -87,26 +87,22 @@ async function publicMint() {
     }
     const total_value = BigNumber(amount * mintPrice);
 
-    let estmated_gas;
-
-    await myContract.methods.publicMint(amount)
-        .estimateGas({
+    try {
+        const gasAmount = await myContract.methods.methods.publicMint(amount).estimateGas({
             from: account,
             gas: 6000000,
             value: total_value
         })
-        .then(function (gasAmount) {
-            estmated_gas = gasAmount;
-            console.log("gas :" + estmated_gas);
-            myContract.methods.publicMint(amount)
-                .send({
-                    from: account,
-                    gas: estmated_gas,
-                    value: total_value
-                })
+        const result = await myContract.methods.methods.publicMint(amount).estimateGas({
+            from: account,
+            gas: gasAmount,
+            value: total_value
         })
-        .catch(function (error) {
-            console.log(error);
-            alert("민팅에 실패하였습니다.");
-        });
+        if (result != null) {
+            alert("민팅에 성공하였습니다.");
+        }
+    } catch (error) {
+        console.log(error);
+        alert("민팅에 실패하였습니다.");
+    }
 }
