@@ -88,12 +88,12 @@ async function publicMint() {
     const total_value = BigNumber(amount * mintPrice);
 
     try {
-        const gasAmount = await myContract.methods.methods.publicMint(amount).estimateGas({
+        const gasAmount = await myContract.methods.publicMint(amount).estimateGas({
             from: account,
             gas: 6000000,
             value: total_value
         })
-        const result = await myContract.methods.methods.publicMint(amount).estimateGas({
+        const result = await myContract.methods.publicMint(amount).estimateGas({
             from: account,
             gas: gasAmount,
             value: total_value
