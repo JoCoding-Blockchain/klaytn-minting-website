@@ -93,7 +93,7 @@ async function publicMint() {
             gas: 6000000,
             value: total_value
         })
-        const result = await myContract.methods.publicMint(amount).estimateGas({
+        const result = await myContract.methods.publicMint(amount).send({
             from: account,
             gas: gasAmount,
             value: total_value
