@@ -99,6 +99,7 @@ async function publicMint() {
             value: total_value
         })
         if (result != null) {
+            console.log(result);
             alert("민팅에 성공하였습니다.");
         }
     } catch (error) {
